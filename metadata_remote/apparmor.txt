@@ -1,0 +1,27 @@
+#include <tunables/global>
+
+profile metadata_remote_addon flags=(attach_disconnected,mediate_deleted) {
+  capability,
+  file,
+  signal,
+
+  # Allow mounting CIFS/SMB shares from inside the container.
+  mount,
+  umount,
+  remount,
+
+  network,
+
+  capability setgid,
+  capability setuid,
+  capability sys_admin,
+  capability dac_read_search,
+
+  # Add-on data, the HA media share, and the CIFS mount point.
+  /data/** rw,
+  /media/** rw,
+  /music/** rw,
+
+  # Docker daemon confinement requires an explicit allow rule for signal.
+  signal (receive) set=(kill,term) peer=/usr/bin/docker,
+}

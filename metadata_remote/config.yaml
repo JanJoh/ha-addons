@@ -1,6 +1,6 @@
 name: Metadata Remote
 slug: metadata_remote
-version: "1.2.2"
+version: "1.2.3"
 description: Web-based audio metadata editor with CIFS/SMB support
 url: https://github.com/JanJoh/ha-addons/tree/main/metadata_remote
 arch:
@@ -30,9 +30,8 @@ map:
 privileged:
   - SYS_ADMIN
   - DAC_READ_SEARCH
-# The default add-on AppArmor profile denies the mount() syscall, so it must be
-# disabled for in-container CIFS mounting to work.
-apparmor: false
+# AppArmor stays enabled (default). The bundled apparmor.txt profile whitelists
+# the mount/umount syscalls that the default profile would otherwise deny.
 # Pre-built wrapper image (base fork image + cifs-utils + run.sh).
 image: ghcr.io/janjoh/metadata-remote-addon
 options:
