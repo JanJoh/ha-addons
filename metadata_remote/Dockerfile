@@ -6,8 +6,9 @@ ARG BUILD_FROM=ghcr.io/janjoh/metadata-remote:latest
 FROM ${BUILD_FROM}
 
 # cifs-utils -> mount SMB/CIFS shares; bash -> run.sh interpreter.
-# jq + ca-certificates are pulled in for bashio (see below).
-RUN apk add --no-cache cifs-utils bash jq ca-certificates
+# jq + curl + ca-certificates are required by bashio at runtime (curl is used
+# to contact the Supervisor API; see below).
+RUN apk add --no-cache cifs-utils bash jq curl ca-certificates
 
 # bashio is normally provided by Home Assistant base images, but this add-on is
 # built FROM the upstream metadata-remote python:alpine image, which does not

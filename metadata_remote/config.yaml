@@ -1,6 +1,6 @@
 name: Metadata Remote
 slug: metadata_remote
-version: "1.2.0"
+version: "1.2.1"
 description: Web-based audio metadata editor with CIFS/SMB support
 url: https://github.com/JanJoh/ha-addons/tree/main/metadata_remote
 arch:
