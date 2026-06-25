@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.6
+
+- Standard fields (Title, Artist, Album, Album Artist, Year, Genre, Track #,
+  Disc #, Composer) are now always shown and editable, even on files that don't
+  have them yet.
+- The "add new field" input now suggests common tag names (ALBUMARTIST-style
+  Vorbis names, MusicBrainz/ReplayGain identifiers, etc.) via autocomplete;
+  custom names are still allowed.
+
 ## 1.2.5
 
 - Moved **SMB protocol version** and **Extra mount options** to advanced
