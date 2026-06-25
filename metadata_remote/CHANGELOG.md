@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.7
+
+- Aligned with Home Assistant add-on conventions: dropped deprecated
+  `armhf`/`armv7` architectures (64-bit only), modernised the `media` mapping
+  syntax, and made **SMB protocol version** a dropdown.
+- Added add-on `icon.png` / `logo.png` and README files.
+
 ## 1.2.6
 
 - Standard fields (Title, Artist, Album, Album Artist, Year, Genre, Track #,

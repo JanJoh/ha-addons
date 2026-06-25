@@ -1,13 +1,12 @@
 name: Metadata Remote
 slug: metadata_remote
-version: "1.2.6"
+version: "1.2.7"
 description: Web-based audio metadata editor with CIFS/SMB support
 url: https://github.com/JanJoh/ha-addons/tree/main/metadata_remote
+# 64-bit targets only; armhf/armv7 are deprecated in current Home Assistant.
 arch:
   - aarch64
   - amd64
-  - armhf
-  - armv7
 # We override CMD with our own run.sh that execs gunicorn directly.
 # The base image has no s6 supervisor, so disable the init system.
 init: false
@@ -23,7 +22,8 @@ ports_description:
   8338/tcp: Web UI (direct access; optional, ingress is used by default)
 # Read/write access to the standard Home Assistant media share.
 map:
-  - media:rw
+  - type: media
+    read_only: false
 # Required to mount CIFS/SMB shares from inside the container
 # (same requirement as the Music Assistant add-on). DAC_READ_SEARCH is also
 # needed by mount.cifs to set its capability set.
@@ -49,6 +49,6 @@ schema:
   smb_share: str?
   smb_user: str?
   smb_password: password?
-  smb_version: str?
+  smb_version: list(3.1.1|3.0|2.1|2.0|1.0)?
   smb_options: str?
   music_subpath: str?
