@@ -60,3 +60,11 @@ Assistant media folder) as the music directory — no mounting required.
   effect.
 - If mounting fails, check the add-on **Log** tab — the exact `mount` error is
   printed there.
+
+## License & credits
+
+Licensed under **AGPL-3.0**. This add-on bundles a patched fork of
+[metadata-remote](https://github.com/wow-signal-dev/metadata-remote) by
+wow-signal-dev. Modifications (ingress support, always-visible standard fields,
+tag-name suggestions) and complete source are at
+[JanJoh/metadata-remote](https://github.com/JanJoh/metadata-remote).
