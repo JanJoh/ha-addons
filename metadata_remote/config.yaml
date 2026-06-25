@@ -1,6 +1,6 @@
 name: Metadata Remote
 slug: metadata_remote
-version: "1.2.1"
+version: "1.2.2"
 description: Web-based audio metadata editor with CIFS/SMB support
 url: https://github.com/JanJoh/ha-addons/tree/main/metadata_remote
 arch:
@@ -25,9 +25,14 @@ ports_description:
 map:
   - media:rw
 # Required to mount CIFS/SMB shares from inside the container
-# (same requirement as the Music Assistant add-on).
+# (same requirement as the Music Assistant add-on). DAC_READ_SEARCH is also
+# needed by mount.cifs to set its capability set.
 privileged:
   - SYS_ADMIN
+  - DAC_READ_SEARCH
+# The default add-on AppArmor profile denies the mount() syscall, so it must be
+# disabled for in-container CIFS mounting to work.
+apparmor: false
 # Pre-built wrapper image (base fork image + cifs-utils + run.sh).
 image: ghcr.io/janjoh/metadata-remote-addon
 options:
