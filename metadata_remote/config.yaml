@@ -1,0 +1,48 @@
+name: Metadata Remote
+slug: metadata_remote
+version: "1.2.0"
+description: Web-based audio metadata editor with CIFS/SMB support
+url: https://github.com/JanJoh/ha-addons/tree/main/metadata_remote
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+# We override CMD with our own run.sh that execs gunicorn directly.
+# The base image has no s6 supervisor, so disable the init system.
+init: false
+# Ingress: embed the web UI in the Home Assistant frontend (iframe).
+ingress: true
+ingress_port: 8338
+panel_icon: mdi:music-box-multiple
+panel_title: Metadata Remote
+# Also expose the port directly (optional; ingress is the default access path).
+ports:
+  8338/tcp: null
+ports_description:
+  8338/tcp: Web UI (direct access; optional, ingress is used by default)
+# Read/write access to the standard Home Assistant media share.
+map:
+  - media:rw
+# Required to mount CIFS/SMB shares from inside the container
+# (same requirement as the Music Assistant add-on).
+privileged:
+  - SYS_ADMIN
+# Pre-built wrapper image (base fork image + cifs-utils + run.sh).
+image: ghcr.io/janjoh/metadata-remote-addon
+options:
+  smb_host: ""
+  smb_share: ""
+  smb_user: ""
+  smb_password: ""
+  smb_version: "3.0"
+  smb_options: "noserverino"
+  music_subpath: ""
+schema:
+  smb_host: str?
+  smb_share: str?
+  smb_user: str?
+  smb_password: password?
+  smb_version: str
+  smb_options: str?
+  music_subpath: str?
