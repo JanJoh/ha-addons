@@ -9,8 +9,19 @@ if bashio::config.has_value 'smb_host'; then
     SMB_SHARE="$(bashio::config 'smb_share')"
     SMB_USER="$(bashio::config 'smb_user')"
     SMB_PASSWORD="$(bashio::config 'smb_password')"
-    SMB_VERSION="$(bashio::config 'smb_version')"
-    SMB_OPTIONS="$(bashio::config 'smb_options')"
+
+    # smb_version / smb_options are advanced options and may be unset; apply
+    # the same defaults the visible config used to carry.
+    if bashio::config.has_value 'smb_version'; then
+        SMB_VERSION="$(bashio::config 'smb_version')"
+    else
+        SMB_VERSION="3.0"
+    fi
+    if bashio::config.has_value 'smb_options'; then
+        SMB_OPTIONS="$(bashio::config 'smb_options')"
+    else
+        SMB_OPTIONS="noserverino"
+    fi
 
     # The mount point may not exist in a fresh container.
     mkdir -p "${MOUNT_POINT}"

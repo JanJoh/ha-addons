@@ -1,0 +1,38 @@
+configuration:
+  smb_host:
+    name: SMB host
+    description: >-
+      Hostname or IP address of the SMB/CIFS server that holds your music,
+      e.g. "192.168.1.10" or "nas.local". Leave this blank to skip mounting a
+      network share and use the Home Assistant /media folder instead.
+  smb_share:
+    name: SMB share
+    description: >-
+      Name of the share on the server to mount, e.g. "Music". Case-sensitive.
+      Only used when an SMB host is set.
+  smb_user:
+    name: Username
+    description: >-
+      Username for the SMB share. For servers that require a domain, use the
+      "DOMAIN\\user" form. Only used when an SMB host is set.
+  smb_password:
+    name: Password
+    description: >-
+      Password for the SMB user. Stored by the Supervisor and passed to the
+      mount command. Only used when an SMB host is set.
+  music_subpath:
+    name: Music subfolder
+    description: >-
+      Optional subfolder within the share to use as the music root, e.g.
+      "Library/FLAC". Leave blank to use the root of the share.
+  smb_version:
+    name: SMB protocol version
+    description: >-
+      SMB dialect passed to mount as "vers=". Defaults to 3.0. Lower it to
+      "2.1" or "2.0" for older servers/NAS devices that reject 3.0.
+  smb_options:
+    name: Extra mount options
+    description: >-
+      Additional comma-separated CIFS mount options appended verbatim, e.g.
+      "noserverino,uid=0,gid=0". Defaults to "noserverino". Leave the default
+      unless you have a specific reason to change it.

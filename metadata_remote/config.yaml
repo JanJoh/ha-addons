@@ -1,6 +1,6 @@
 name: Metadata Remote
 slug: metadata_remote
-version: "1.2.4"
+version: "1.2.5"
 description: Web-based audio metadata editor with CIFS/SMB support
 url: https://github.com/JanJoh/ha-addons/tree/main/metadata_remote
 arch:
@@ -34,19 +34,21 @@ privileged:
 # the mount/umount syscalls that the default profile would otherwise deny.
 # Pre-built wrapper image (base fork image + cifs-utils + run.sh).
 image: ghcr.io/janjoh/metadata-remote-addon
+# Only the everyday options carry defaults here so they show by default.
+# smb_version / smb_options are intentionally omitted: as optional schema keys
+# without a default they are hidden under "Show unused optional configuration
+# options" in the UI (their effective defaults are applied in run.sh).
 options:
   smb_host: ""
   smb_share: ""
   smb_user: ""
   smb_password: ""
-  smb_version: "3.0"
-  smb_options: "noserverino"
   music_subpath: ""
 schema:
   smb_host: str?
   smb_share: str?
   smb_user: str?
   smb_password: password?
-  smb_version: str
+  smb_version: str?
   smb_options: str?
   music_subpath: str?
