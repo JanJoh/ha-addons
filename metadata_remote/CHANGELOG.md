@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.8
+
+- Multi-value **genre** support. Multiple genres in a file are now read into
+  the genre field joined by `; ` (e.g. `Pop; Dance; Eurodance`) instead of
+  only showing the first one. On save the field is split back into separate
+  values — a multi-value ID3v2.4 `TCON` frame for MP3/WAV, and multiple
+  `genre` Vorbis Comment fields for FLAC/OGG. Type genres separated by `; `;
+  a hint below the field explains the separator.
+
 ## 1.2.7
 
 - Aligned with Home Assistant add-on conventions: dropped deprecated
