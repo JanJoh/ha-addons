@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.9
+
+- Extended multi-value **genre** support to the remaining formats: MP4
+  (m4a/m4b), WMA/ASF, and WavPack. Genre now reads/writes multiple values
+  (joined by `; ` in the field, stored as separate values per format)
+  across every supported format, not just MP3/WAV and FLAC/OGG.
+
 ## 1.2.8
 
 - Multi-value **genre** support. Multiple genres in a file are now read into
