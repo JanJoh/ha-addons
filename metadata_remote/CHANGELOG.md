@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.2.10
+
+- Multi-value **performer** support. FLAC/Vorbis-style files often credit
+  individual musicians via a `PERFORMER` tag distinct from `ARTIST` (e.g.
+  `Roy Bittan (piano); Max Weinberg (drums)`). Adding a custom `PERFORMER`
+  field now reads and writes every value (joined by `; ` in the field,
+  stored as separate values per format) across all supported formats,
+  mirroring the multi-value genre support added in 1.2.8/1.2.9.
+- Fixed a bug where a custom field named "Performer" was silently treated
+  as an alias for Artist (TPE1 is officially named "Lead performer(s)" in
+  the ID3v2 spec) instead of creating its own field — on MP3 this caused
+  the value to be silently dropped entirely.
+
 ## 1.2.9
 
 - Extended multi-value **genre** support to the remaining formats: MP4
