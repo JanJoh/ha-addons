@@ -22,6 +22,21 @@ runtime CIFS/SMB mounting and Home Assistant ingress support. Edit tags and
 album art for music stored on a NAS or the HA media share, directly from the
 HA frontend.
 
+## Integrations
+
+Custom integrations are installed through [HACS](https://hacs.xyz) rather than
+the Add-on Store. Add the repository as a custom repository (type
+**Integration**) in HACS, or use the button.
+
+### [HA Phase Map](https://github.com/JanJoh/ha-phase-map)
+
+Which load is on which phase: headroom per phase against the main fuse,
+unmetered current, nested meters, a live check that notices when a load has
+moved phase, and a dashboard card drawing the fuse as a single-line diagram
+(bundled with the integration).
+
+[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=ha-phase-map&category=integration)
+
 ## License & attribution
 
 This project is licensed under the **GNU Affero General Public License v3.0**
