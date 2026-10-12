@@ -26,7 +26,7 @@ HA frontend.
 
 Custom integrations are installed through [HACS](https://hacs.xyz) rather than
 the Add-on Store. Add the repository as a custom repository (type
-**Integration**) in HACS, or use the button.
+**Integration**) in HACS, or use the button under each one.
 
 ### [HA Phase Map](https://github.com/JanJoh/ha-phase-map)
 
@@ -36,6 +36,20 @@ moved phase, and a dashboard card drawing the fuse as a single-line diagram
 (bundled with the integration).
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=ha-phase-map&category=integration)
+
+### [GARO Entity Balance Meter](https://github.com/JanJoh/Garo-entity-balance-meter-ha)
+
+Reads a GARO Entity Balance load balancer locally and uses it as the grid
+consumption meter: total power and current per phase.
+
+[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=Garo-entity-balance-meter-ha&category=integration)
+
+### [GARO Entity Charger Meter](https://github.com/JanJoh/Garo-entity-charger-meter-ha)
+
+Imports data from a GARO Entity charger through its local Swagger API: power,
+current per phase and energy.
+
+[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=Garo-entity-charger-meter-ha&category=integration)
 
 ## License & attribution
 
