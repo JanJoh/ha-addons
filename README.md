@@ -1,53 +1,86 @@
-# JanJoh's Home Assistant Add-ons
+# JanJoh's Home Assistant add-ons and integrations
 
-A small collection of Home Assistant add-ons.
+One add-on and three custom integrations for Home Assistant. Everything runs locally: no
+cloud service and no accounts.
 
-## Installation
-
-Add this repository to Home Assistant:
-
-1. **Settings → Add-ons → Add-on Store**
-2. Top-right **⋮ → Repositories**
-3. Add `https://github.com/JanJoh/ha-addons` and close.
-
-[![Add repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FJanJoh%2Fha-addons)
+| | Type | What it does | Version |
+|---|---|---|---|
+| [Metadata Remote](#metadata-remote) | Add-on | Edit tags and album art of your music from the HA sidebar | [![Version](https://img.shields.io/github/v/tag/JanJoh/ha-addons?label=)](./metadata_remote/CHANGELOG.md) |
+| [HA Phase Map](#ha-phase-map) | Integration (HACS) | Which load is on which phase, and how much headroom each phase has | [![Release](https://img.shields.io/github/v/release/JanJoh/ha-phase-map?label=)](https://github.com/JanJoh/ha-phase-map/releases) |
+| [GARO Entity Balance Meter](#garo-entity-balance-meter) | Integration (HACS) | Your grid meter, read from a GARO Entity Balance | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-balance-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-balance-meter-ha/releases) |
+| [GARO Entity Charger Meter](#garo-entity-charger-meter) | Integration (HACS) | Energy, current and charging state of a GARO Entity charger | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-charger-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-charger-meter-ha/releases) |
 
 ## Add-ons
 
-### [Metadata Remote](./metadata_remote)
+Add this repository to Home Assistant: **Settings → Add-ons → Add-on Store → ⋮ →
+Repositories**, add `https://github.com/JanJoh/ha-addons`, or use the button.
 
-Web-based audio metadata editor (a wrapper around
-[metadata-remote](https://github.com/wow-signal-dev/metadata-remote)) with
-runtime CIFS/SMB mounting and Home Assistant ingress support. Edit tags and
-album art for music stored on a NAS or the HA media share, directly from the
-HA frontend.
+[![Add repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FJanJoh%2Fha-addons)
+
+### Metadata Remote
+
+A web editor for the tags and album art of your audio files, inside Home Assistant.
+
+<img src="https://raw.githubusercontent.com/JanJoh/metadata-remote/v1.2.11/screenshots/main-interface.png" alt="Metadata Remote" width="640">
+
+- **In the sidebar:** the editor runs through ingress, with no extra port or login.
+- **Music on a NAS:** mounts a CIFS/SMB share at start, or uses Home Assistant's `/media`.
+- **Tags as they are:** standard fields always shown, custom fields with name suggestions,
+  multi-value genre and performer.
+
+**Needs:** Home Assistant OS or Supervised (add-ons). ·
+[Documentation](./metadata_remote/DOCS.md) · [Changelog](./metadata_remote/CHANGELOG.md) ·
+[Issues](https://github.com/JanJoh/ha-addons/issues)
 
 ## Integrations
 
-Custom integrations are installed through [HACS](https://hacs.xyz) rather than
-the Add-on Store. Add the repository as a custom repository (type
-**Integration**) in HACS, or use the button under each one.
+Custom integrations are installed through [HACS](https://hacs.xyz): **HACS → ⋮ → Custom
+repositories**, add the repository with type **Integration**, or use the button under each
+one. Then download it and restart Home Assistant.
 
-### [HA Phase Map](https://github.com/JanJoh/ha-phase-map)
+### HA Phase Map
 
-Which load is on which phase: headroom per phase against the main fuse,
-unmetered current, nested meters, a live check that notices when a load has
-moved phase, and a dashboard card drawing the fuse as a single-line diagram
-(bundled with the integration).
+Which load is on which phase of your main fuse, and how much headroom each phase has.
+
+<img src="https://raw.githubusercontent.com/JanJoh/ha-phase-map/main/docs/images/card-light.png" alt="HA Phase Map card" width="640">
+
+- **Per phase:** headroom, an overload warning, and the current no meter explains.
+- **Knows where loads are:** suggests each meter's phase from history, notices when one has
+  moved, and (optionally) finds meters you have not added.
+- **A dashboard card** drawing the main fuse as a single-line diagram, included.
+
+**Needs:** a sensor per phase of the main fuse that updates within seconds. ·
+[Documentation](https://github.com/JanJoh/ha-phase-map#readme) ·
+[Issues](https://github.com/JanJoh/ha-phase-map/issues)
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=ha-phase-map&category=integration)
 
-### [GARO Entity Balance Meter](https://github.com/JanJoh/Garo-entity-balance-meter-ha)
+### GARO Entity Balance Meter
 
-Reads a GARO Entity Balance load balancer locally and uses it as the grid
-consumption meter: total power and current per phase.
+Your grid meter, read from a GARO Entity Balance load balancer over its local API.
+
+- **For the Energy dashboard:** total imported energy as the grid source; no separate P1
+  reader needed.
+- **Live:** power, and current and voltage per phase, every 15 seconds.
+- **Diagnostics** (off by default): temperatures, firmware, network.
+
+**Needs:** a GARO Entity Balance on the utility meter's P1 port, and the login on its sticker. ·
+[Documentation](https://github.com/JanJoh/Garo-entity-balance-meter-ha#readme) ·
+[Issues](https://github.com/JanJoh/Garo-entity-balance-meter-ha/issues)
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=Garo-entity-balance-meter-ha&category=integration)
 
-### [GARO Entity Charger Meter](https://github.com/JanJoh/Garo-entity-charger-meter-ha)
+### GARO Entity Charger Meter
 
-Imports data from a GARO Entity charger through its local Swagger API: power,
-current per phase and energy.
+The built-in meter and charging state of a GARO Entity EV charger, over its local API.
+
+- **For the Energy dashboard:** the charger's imported energy.
+- **Live:** power, and current and voltage per phase (optional), every 15 seconds.
+- **Charging:** the vehicle state (connected, charging), CP and PP signal levels.
+
+**Needs:** a GARO Entity charger with the local REST API, and the login on its sticker. ·
+[Documentation](https://github.com/JanJoh/Garo-entity-charger-meter-ha#readme) ·
+[Issues](https://github.com/JanJoh/Garo-entity-charger-meter-ha/issues)
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=Garo-entity-charger-meter-ha&category=integration)
 
