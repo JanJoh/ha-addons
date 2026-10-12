@@ -66,5 +66,8 @@ Assistant media folder) as the music directory — no mounting required.
 Licensed under **AGPL-3.0**. This add-on bundles a patched fork of
 [metadata-remote](https://github.com/wow-signal-dev/metadata-remote) by
 wow-signal-dev. Modifications (ingress support, always-visible standard fields,
-tag-name suggestions) and complete source are at
-[JanJoh/metadata-remote](https://github.com/JanJoh/metadata-remote).
+tag-name suggestions, multi-value genre and performer) and complete source are at
+[JanJoh/metadata-remote](https://github.com/JanJoh/metadata-remote). Each add-on
+version is built from the fork tag with the same number (add-on 1.2.11 → tag
+`v1.2.11`); the add-on's own files are in this repository at tag `v1.2.11`.
+The help panel inside the app (**?**) links to the same source.

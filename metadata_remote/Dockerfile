@@ -2,8 +2,15 @@
 #
 # Base = the PATCHED FORK image (built separately from JanJoh/metadata-remote).
 # This wrapper layers in CIFS/SMB mounting support and the add-on entrypoint.
-ARG BUILD_FROM=ghcr.io/janjoh/metadata-remote:latest
+# Pinned to the fork tag with the same version as this add-on, so the complete
+# source of every release is the fork at that tag (AGPL-3.0). Bump both together.
+ARG BUILD_FROM=ghcr.io/janjoh/metadata-remote:v1.2.11
 FROM ${BUILD_FROM}
+
+LABEL org.opencontainers.image.licenses="AGPL-3.0-only" \
+      org.opencontainers.image.source="https://github.com/JanJoh/ha-addons" \
+      org.opencontainers.image.base.name="ghcr.io/janjoh/metadata-remote:v1.2.11" \
+      org.opencontainers.image.description="Metadata Remote add-on. Source of the app: https://github.com/JanJoh/metadata-remote/tree/v1.2.11"
 
 # cifs-utils -> mount SMB/CIFS shares; bash -> run.sh interpreter.
 # jq + curl + ca-certificates are required by bashio at runtime (curl is used

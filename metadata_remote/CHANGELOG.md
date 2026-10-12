@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.11
+
+- Licence housekeeping (AGPL-3.0). The help panel now links to the source of
+  this modified version (and to the original project), and the add-on is built
+  from the fork tag with the same version number
+  ([`v1.2.11`](https://github.com/JanJoh/metadata-remote/tree/v1.2.11)) instead
+  of its latest build, so the complete source of each release can be checked
+  out. No functional changes.
+
 ## 1.2.10
 
 - Multi-value **performer** support. FLAC/Vorbis-style files often credit
