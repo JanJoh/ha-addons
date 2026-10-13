@@ -6,7 +6,7 @@ cloud service and no accounts.
 | | Type | What it does | Version |
 |---|---|---|---|
 | [Metadata Remote](#metadata-remote) | Add-on | Edit tags and album art of your music from the HA sidebar | [![Version](https://img.shields.io/github/v/tag/JanJoh/ha-addons?label=)](./metadata_remote/CHANGELOG.md) |
-| [HA Phase Map](#ha-phase-map) | Integration (HACS) | Which load is on which phase, and how much headroom each phase has | [![Release](https://img.shields.io/github/v/release/JanJoh/ha-phase-map?label=)](https://github.com/JanJoh/ha-phase-map/releases) |
+| [Phase Map](#phase-map) | Integration (HACS) | Which load is on which phase, and how much headroom each phase has | [![Release](https://img.shields.io/github/v/release/JanJoh/ha-phase-map?label=)](https://github.com/JanJoh/ha-phase-map/releases) |
 | [GARO Entity Balance Meter](#garo-entity-balance-meter) | Integration (HACS) | Your grid meter, read from a GARO Entity Balance | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-balance-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-balance-meter-ha/releases) |
 | [GARO Entity Charger Meter](#garo-entity-charger-meter) | Integration (HACS) | Energy, current and charging state of a GARO Entity charger | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-charger-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-charger-meter-ha/releases) |
 
@@ -38,11 +38,11 @@ Custom integrations are installed through [HACS](https://hacs.xyz): **HACS â†’ â
 repositories**, add the repository with type **Integration**, or use the button under each
 one. Then download it and restart Home Assistant.
 
-### HA Phase Map
+### Phase Map
 
 Which load is on which phase of your main fuse, and how much headroom each phase has.
 
-<img src="https://raw.githubusercontent.com/JanJoh/ha-phase-map/main/docs/images/card-light.png" alt="HA Phase Map card" width="640">
+<img src="https://raw.githubusercontent.com/JanJoh/ha-phase-map/main/docs/images/card-light.png" alt="Phase Map card" width="640">
 
 - **Per phase:** headroom, an overload warning, and the current no meter explains.
 - **Knows where loads are:** suggests each meter's phase from history, notices when one has
