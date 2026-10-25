@@ -1,7 +1,7 @@
 # JanJoh's Home Assistant add-ons and integrations
 
-One add-on and three custom integrations for Home Assistant. Everything runs locally: no
-cloud service and no accounts.
+One add-on, four custom integrations and a dashboard card for Home Assistant. Everything
+runs locally: no cloud service and no accounts.
 
 | | Type | What it does | Version |
 |---|---|---|---|
@@ -9,6 +9,8 @@ cloud service and no accounts.
 | [Phase Map](#phase-map) | Integration (HACS) | Which load is on which phase, and how much headroom each phase has | [![Release](https://img.shields.io/github/v/release/JanJoh/ha-phase-map?label=)](https://github.com/JanJoh/ha-phase-map/releases) |
 | [GARO Entity Balance Meter](#garo-entity-balance-meter) | Integration (HACS) | Your grid meter, read from a GARO Entity Balance | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-balance-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-balance-meter-ha/releases) |
 | [GARO Entity Charger Meter](#garo-entity-charger-meter) | Integration (HACS) | Energy, current and charging state of a GARO Entity charger | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-charger-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-charger-meter-ha/releases) |
+| [Thermia Genesis (fork)](#thermia-genesis-fork) | Integration (HACS) | A Thermia ground source heat pump over local Modbus, with fixes not yet upstream | [![Release](https://img.shields.io/github/v/release/JanJoh/thermiagenesis?label=)](https://github.com/JanJoh/thermiagenesis/releases) |
+| [Calibra Card](#calibra-card) | Dashboard card (HACS) | The heat pump drawn as it is plumbed: borehole, compressor, pumps, valve, tank | [![Release](https://img.shields.io/github/v/release/JanJoh/calibra-card?label=)](https://github.com/JanJoh/calibra-card/releases) |
 
 ## Add-ons
 
@@ -83,6 +85,51 @@ The built-in meter and charging state of a GARO Entity EV charger, over its loca
 [Issues](https://github.com/JanJoh/Garo-entity-charger-meter-ha/issues)
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=Garo-entity-charger-meter-ha&category=integration)
+
+### Thermia Genesis (fork)
+
+A Thermia heat pump (Calibra, Diplomat Inverter, Mega) read and controlled over its local
+Modbus interface. This is a fork of [CJNE/thermiagenesis](https://github.com/CJNE/thermiagenesis);
+all credit for the integration goes there. The fork exists to install through HACS and to carry
+fixes until they land upstream.
+
+- **Fewer outages:** enabling the alarm class E or oil boost registers no longer takes every
+  entity down, and entities are no longer `unknown` for 30 seconds after a reload.
+- **Correct values:** pool temperature scaling, the firmware version, and the gear limit
+  following the compressor's own gears (10 on a Calibra).
+- **More to see:** demand sensors keep their history as a timeline, the heating stop is limited
+  to 5–25 °C, and the internal immersion heater's step and state are available on Mega.
+
+**Needs:** a Thermia Genesis-platform heat pump on the network with Modbus TCP enabled. ·
+[What the fork changes](https://github.com/JanJoh/thermiagenesis#readme) ·
+[Issues](https://github.com/JanJoh/thermiagenesis/issues)
+
+[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=thermiagenesis&category=integration)
+
+## Dashboard cards
+
+Cards are installed through HACS as well: add the repository with type **Dashboard**, or use
+the button. HACS registers the card as a dashboard resource.
+
+### Calibra Card
+
+A Thermia Calibra heat pump drawn as it is actually plumbed, live, from the Thermia Genesis
+integration above.
+
+<img src="https://raw.githubusercontent.com/JanJoh/calibra-card/main/images/heat-light-760.png" alt="Calibra Card" width="640">
+
+- **The whole system:** borehole, compressor gears, brine and condenser pumps, the diverting
+  valve, radiators, the hot-water tank and an optional separate water heater.
+- **Why it does what it does:** a line under the title explains a limited gear, a heating stop,
+  the immersion heater coming on, an alarm, or your own notices.
+- **Energy signature card,** included: daily energy against outdoor temperature, to compare two
+  periods such as an old and a new pump.
+
+**Needs:** the Thermia Genesis integration (this fork). ·
+[Documentation](https://github.com/JanJoh/calibra-card#readme) ·
+[Issues](https://github.com/JanJoh/calibra-card/issues)
+
+[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=calibra-card&category=plugin)
 
 ## License & attribution
 
