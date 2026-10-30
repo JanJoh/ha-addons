@@ -1,6 +1,6 @@
 # JanJoh's Home Assistant add-ons and integrations
 
-One add-on, four custom integrations and a dashboard card for Home Assistant. Everything
+One add-on, four custom integrations and two dashboard cards for Home Assistant. Everything
 runs locally: no cloud service and no accounts.
 
 | | Type | What it does | Version |
@@ -11,6 +11,7 @@ runs locally: no cloud service and no accounts.
 | [GARO Entity Charger Meter](#garo-entity-charger-meter) | Integration (HACS) | Energy, current and charging state of a GARO Entity charger | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-charger-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-charger-meter-ha/releases) |
 | [Thermia Genesis (fork)](#thermia-genesis-fork) | Integration (HACS) | A Thermia ground source heat pump over local Modbus, with fixes not yet upstream | [![Release](https://img.shields.io/github/v/release/JanJoh/thermiagenesis?label=)](https://github.com/JanJoh/thermiagenesis/releases) |
 | [Calibra Card](#calibra-card) | Dashboard card (HACS) | The heat pump drawn as it is plumbed: borehole, compressor, pumps, valve, tank | [![Release](https://img.shields.io/github/v/release/JanJoh/calibra-card?label=)](https://github.com/JanJoh/calibra-card/releases) |
+| [Atlas Card](#atlas-card) | Dashboard card (HACS) | A Calibra Card variant for a Thermia Atlas with an external water heater and a hot gas exchanger (HGW). Written without the hardware | [![Release](https://img.shields.io/github/v/release/JanJoh/atlas-card?label=)](https://github.com/JanJoh/atlas-card/releases) |
 
 ## Add-ons
 
@@ -130,6 +131,29 @@ integration above.
 [Issues](https://github.com/JanJoh/calibra-card/issues)
 
 [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=calibra-card&category=plugin)
+
+### Atlas Card
+
+> **Written blind:** I don't have an Atlas or a hot gas exchanger. The card follows the Thermia
+> Genesis register map, not a real installation. Reports from real systems are welcome.
+
+A variant of the Calibra Card for a Thermia Atlas without a built-in tank: an external water
+heater, and a hot gas heat exchanger (HGW) that heats the tank from the compressor's hot gas.
+
+<img src="https://raw.githubusercontent.com/JanJoh/atlas-card/main/images/heat-light-760.png" alt="Atlas Card" width="640">
+
+- **The HGW loop** from the compressor to the tank, with its status, the hot gas temperature and
+  the temperature going to the tank.
+- **The external water heater,** charged through the diverting valve, with its temperatures
+  over time.
+- **The same diagram as the Calibra Card** for the borehole, compressor, pumps and radiators.
+
+**Needs:** the Thermia Genesis integration (this fork), with its HGW entities enabled; the
+README lists them. ·
+[Documentation](https://github.com/JanJoh/atlas-card#readme) ·
+[Issues](https://github.com/JanJoh/atlas-card/issues)
+
+[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JanJoh&repository=atlas-card&category=plugin)
 
 ## License & attribution
 
