@@ -1,6 +1,6 @@
 name: Spoolman
 slug: spoolman
-version: "0.27.1"
+version: "0.27.1-1"
 description: Keep track of your 3D printer filament spools
 url: https://github.com/JanJoh/ha-addons/tree/main/spoolman
 # 64-bit targets only; armhf/armv7 are deprecated in current Home Assistant.

@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.27.1
+## 0.27.1-1
 
 - First version of the add-on, running Spoolman 0.27.1
   ([release notes](https://github.com/Donkie/Spoolman/releases/tag/v0.27.1)).

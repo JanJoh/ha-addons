@@ -49,7 +49,7 @@ filament, as a Home Assistant add-on.
   OctoPrint.
 - **In your backups:** the spool database lives in the add-on's data folder.
 
-Spoolman itself is unchanged; the add-on version is the Spoolman version it runs.
+Spoolman itself is unchanged; the add-on version is the Spoolman version it runs (`0.27.1-1`).
 
 **Needs:** Home Assistant OS or Supervised (add-ons). ·
 [Documentation](./spoolman/DOCS.md) · [Changelog](./spoolman/CHANGELOG.md) ·

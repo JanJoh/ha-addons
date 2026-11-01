@@ -44,7 +44,8 @@ and restoring a backup restores your spools.
 
 ## Versions
 
-The add-on version is the Spoolman version it runs. Spoolman's changelog:
+The add-on version is the Spoolman version it runs, with `-1`, `-2` … added for
+changes to the add-on alone. Spoolman's changelog:
 <https://github.com/Donkie/Spoolman/releases>.
 
 ## Licence
