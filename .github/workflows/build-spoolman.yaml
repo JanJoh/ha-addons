@@ -1,0 +1,60 @@
+# Builds the Spoolman add-on image: the official Spoolman image plus nginx,
+# bashio and run.sh (see spoolman/Dockerfile).
+#
+# The image is tagged with the add-on version from spoolman/config.yaml, which
+# Home Assistant pulls as ghcr.io/janjoh/spoolman-addon:<version>.
+name: Build Spoolman add-on image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'spoolman/**'
+      - '.github/workflows/build-spoolman.yaml'
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: janjoh/spoolman-addon
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read add-on version
+        id: version
+        run: echo "version=$(sed -n 's/^version: *"\(.*\)"/\1/p' spoolman/config.yaml)" >> "$GITHUB_OUTPUT"
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./spoolman
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          labels: |
+            org.opencontainers.image.version=${{ steps.version.outputs.version }}
+          cache-from: type=gha,scope=spoolman
+          cache-to: type=gha,mode=max,scope=spoolman

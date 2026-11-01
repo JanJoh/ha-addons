@@ -11,6 +11,10 @@ on:
   push:
     branches: [ main ]
     tags: [ 'v*' ]
+    # Tag pushes ignore this filter; branch pushes only rebuild for Metadata Remote changes.
+    paths:
+      - 'metadata_remote/**'
+      - '.github/workflows/build.yaml'
   workflow_dispatch:
 
 env:
