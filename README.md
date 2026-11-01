@@ -1,12 +1,11 @@
 # JanJoh's Home Assistant add-ons and integrations
 
-Two add-ons, four custom integrations and two dashboard cards for Home Assistant. Everything
+One add-on, four custom integrations and two dashboard cards for Home Assistant. Everything
 runs locally: no cloud service and no accounts.
 
 | | Type | What it does | Version |
 |---|---|---|---|
 | [Metadata Remote](#metadata-remote) | Add-on | Edit tags and album art of your music from the HA sidebar | [![Version](https://img.shields.io/github/v/tag/JanJoh/ha-addons?label=)](./metadata_remote/CHANGELOG.md) |
-| [Spoolman](#spoolman) | Add-on | Your 3D printer filament spools, in the HA sidebar | [![Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2FJanJoh%2Fha-addons%2Fmain%2Fspoolman%2Fconfig.yaml&query=%24.version&label=)](./spoolman/CHANGELOG.md) |
 | [Phase Map](#phase-map) | Integration (HACS) | Which load is on which phase, and how much headroom each phase has | [![Release](https://img.shields.io/github/v/release/JanJoh/ha-phase-map?label=)](https://github.com/JanJoh/ha-phase-map/releases) |
 | [GARO Entity Balance Meter](#garo-entity-balance-meter) | Integration (HACS) | Your grid meter, read from a GARO Entity Balance | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-balance-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-balance-meter-ha/releases) |
 | [GARO Entity Charger Meter](#garo-entity-charger-meter) | Integration (HACS) | Energy, current and charging state of a GARO Entity charger | [![Release](https://img.shields.io/github/v/release/JanJoh/Garo-entity-charger-meter-ha?label=)](https://github.com/JanJoh/Garo-entity-charger-meter-ha/releases) |
@@ -34,25 +33,6 @@ A web editor for the tags and album art of your audio files, inside Home Assista
 
 **Needs:** Home Assistant OS or Supervised (add-ons). ·
 [Documentation](./metadata_remote/DOCS.md) · [Changelog](./metadata_remote/CHANGELOG.md) ·
-[Issues](https://github.com/JanJoh/ha-addons/issues)
-
-### Spoolman
-
-[Spoolman](https://github.com/Donkie/Spoolman), the self-hosted inventory of 3D printer
-filament, as a Home Assistant add-on.
-
-<img src="https://raw.githubusercontent.com/JanJoh/ha-addons/main/spoolman/screenshots/library.png" alt="Spoolman" width="640">
-
-- **In the sidebar:** Spoolman runs through ingress, with no extra port or login.
-- **For your printer and Home Assistant:** an API port for the
-  [Spoolman integration](https://github.com/Disane87/spoolman-homeassistant), Moonraker and
-  OctoPrint.
-- **In your backups:** the spool database lives in the add-on's data folder.
-
-Spoolman itself is unchanged; the add-on version is the Spoolman version it runs (`0.27.1-1`).
-
-**Needs:** Home Assistant OS or Supervised (add-ons). ·
-[Documentation](./spoolman/DOCS.md) · [Changelog](./spoolman/CHANGELOG.md) ·
 [Issues](https://github.com/JanJoh/ha-addons/issues)
 
 ## Integrations
@@ -197,7 +177,3 @@ vs. upstream:
 
 Per the AGPL, complete corresponding source for the bundled app is available at
 the fork repository linked above.
-
-The Spoolman add-on runs the unmodified official image of
-[Spoolman](https://github.com/Donkie/Spoolman) by Daniel Hultgren, which is MIT
-licensed.
