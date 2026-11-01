@@ -38,8 +38,8 @@ Assistant's login in front. Only map it if that is acceptable on your network.
 
 ## Data
 
-The database is `/data/spoolman/spoolman.db` inside the add-on, with Spoolman's
-backups in `/data/spoolman/backups`. Both are included in Home Assistant backups,
+The database is `/data/spoolman.db` inside the add-on, with Spoolman's backups in
+`/data/backups`. Both are included in Home Assistant backups,
 and restoring a backup restores your spools.
 
 ## Versions

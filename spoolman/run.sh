@@ -2,7 +2,9 @@
 # shellcheck shell=bash
 set -e
 
-DATA_DIR="/data/spoolman"
+# The add-on's own /data mount: Spoolman checks that its data directory is a mount
+# (and warns that data will be lost otherwise), so it gets /data itself.
+DATA_DIR="/data"
 
 # The ingress path is fixed for an installed add-on; Spoolman serves everything
 # under it so its links work inside the Home Assistant frontend.
@@ -15,9 +17,9 @@ bashio::log.info "Ingress path: ${BASE_PATH}"
 sed "s|__BASE__|${BASE_PATH}|g" /etc/nginx/spoolman.conf.tpl > /etc/nginx/nginx.conf
 nginx -t -q
 
-# Spoolman drops to its own "app" user (uid 1000); give it the data directory.
-mkdir -p "${DATA_DIR}"
-chown -R 1000:1000 "${DATA_DIR}"
+# Spoolman drops to its own "app" user (uid 1000); give it the data directory,
+# leaving the Supervisor's options.json alone.
+find "${DATA_DIR}" -path "${DATA_DIR}/options.json" -prune -o -exec chown 1000:1000 {} +
 
 export SPOOLMAN_DIR_DATA="${DATA_DIR}"
 export SPOOLMAN_BASE_PATH="${BASE_PATH}"
