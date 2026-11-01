@@ -30,7 +30,8 @@ jobs:
 
       - name: Read add-on version
         id: version
-        run: echo "version=$(sed -n 's/^version: *"\(.*\)"/\1/p' spoolman/config.yaml)" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "version=$(sed -n 's/^version: *"\(.*\)"/\1/p' spoolman/config.yaml)" >> "$GITHUB_OUTPUT"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
