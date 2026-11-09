@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.12
+
+- Security updates in the base image: Flask 3.1.3, Werkzeug 3.1.9 and
+  gunicorn 23.0.0 (request smuggling in gunicorn, several Werkzeug advisories).
+  Built from fork tag
+  [`v1.2.12`](https://github.com/JanJoh/metadata-remote/tree/v1.2.12).
+  No functional changes.
+
 ## 1.2.11
 
 - Licence housekeeping (AGPL-3.0). The help panel now links to the source of

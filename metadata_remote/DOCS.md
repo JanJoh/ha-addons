@@ -68,6 +68,6 @@ Licensed under **AGPL-3.0**. This add-on bundles a patched fork of
 wow-signal-dev. Modifications (ingress support, always-visible standard fields,
 tag-name suggestions, multi-value genre and performer) and complete source are at
 [JanJoh/metadata-remote](https://github.com/JanJoh/metadata-remote). Each add-on
-version is built from the fork tag with the same number (add-on 1.2.11 → tag
-`v1.2.11`); the add-on's own files are in this repository at tag `v1.2.11`.
+version is built from the fork tag with the same number (add-on 1.2.12 → tag
+`v1.2.12`); the add-on's own files are in this repository at tag `v1.2.12`.
 The help panel inside the app (**?**) links to the same source.
